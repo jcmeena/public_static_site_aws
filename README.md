@@ -19,7 +19,7 @@ The infrastructure deploys a fully serverless static website hosting environment
 ### 🚀 Getting Started
 
 #### Prerequisites
-*   [Terraform](https://hashicorp.com) (v6.60.0) installed locally.
+*   [Terraform](https://hashicorp.com) (v1.0+) installed locally.
 *   An active **AWS Account** with configured credentials (`aws configure`).
 
 #### Deployment Steps
@@ -36,3 +36,27 @@ The infrastructure deploys a fully serverless static website hosting environment
     terraform apply
     ```
 4.  **Access your site**: Once deployment completes, Terraform outputs the generated S3 website endpoint URL. Open it in any browser to see your live site!
+
+---
+
+### 📊 Infrastructure Data Flow
+
+```mermaid
+graph TD
+    User([🌐 End User / Browser]) -->|1. Requests Website URL| Endpoint[S3 Website Endpoint]
+    
+    subgraph AWS Cloud Architecture
+        subgraph Amazon S3 Bucket
+            Endpoint -->|2. Evaluates Controls| PAB[aws_s3_bucket_public_access_block]
+            PAB -->|Allows Public Traffic| Policy[aws_s3_bucket_policy]
+            Policy -->|Grants s3:GetObject| Config[aws_s3_bucket_website_configuration]
+            Config -->|3. Routes to Index Document| File[aws_s3_object: index.html]
+        end
+    end
+
+    File -->|4. Returns HTML Page| User
+
+    style User fill:#f9f,stroke:#333,stroke-width:2px
+    style File fill:#bbf,stroke:#333,stroke-width:2px
+    style Endpoint fill:#bfb,stroke:#333,stroke-width:2px
+```
