@@ -1,0 +1,2 @@
+# public_static_site_aws
+public_static_site_aws
