@@ -14,6 +14,8 @@ The infrastructure deploys a fully serverless static website hosting environment
 *   **`aws_s3_bucket_policy`**: Attaches a JSON bucket policy allowing public standard read access (`s3:GetObject`) so users can load the website files.
 *   **`aws_s3_object`**: Manages the upload and content delivery of the `index.html` file into the root of the S3 bucket.
 
+![Architecture Diagram](images/s3.drawio.svg)
+
 ---
 
 ### 🚀 Getting Started

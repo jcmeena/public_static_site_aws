@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="ArFZfXzCbMOBa0jJJLPy" name="Page-1">
+    <mxGraphModel dx="898" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="region" parent="1" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#2E7D32;fillColor=none;dashed=1;connectable=0;collapsible=0;fontStyle=1;fontSize=12;" value="AWS Region: us-east-2 (Ohio)" vertex="1">
+          <mxGeometry height="340" width="680" x="60" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_bucket" parent="region" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#E25A42;fillColor=#FFF5F5;connectable=0;collapsible=0;startSize=50;align=left;spacingLeft=70;" value="Amazon S3 Bucket&lt;br&gt;&lt;font color=&quot;#666666&quot;&gt;Name: my-bucket&lt;br&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="260" width="360" x="280" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_icon" parent="s3_bucket" style="shape=mxgraph.aws4.s3;html=1;whiteSpace=wrap;aspect=fixed;strokeColor=none;fillColor=#E25A42;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="15" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="web_config" parent="s3_bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#FB8C00;align=left;spacingLeft=10;" value="&lt;b&gt;Website Configuration&lt;/b&gt;&lt;br&gt;Index Document: index.html" vertex="1">
+          <mxGeometry height="45" width="320" x="20" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="public_block" parent="s3_bucket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#E53935;align=left;spacingLeft=10;" value="&lt;b&gt;Public Access Block Settings&lt;/b&gt;&lt;br&gt;block_public_policy = false&lt;br&gt;block_public_acls = false" vertex="1">
+          <mxGeometry height="50" width="320" x="20" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_object" parent="s3_bucket" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#E1F5FE;strokeColor=#0288D1;align=left;spacingLeft=10;" value="&lt;b&gt;Object:&lt;/b&gt; index.html&lt;br&gt;&lt;font color=&quot;#007acc&quot;&gt;&amp;lt;h1&amp;gt;HelloWorld! &amp;lt;/h1&amp;gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="320" x="20" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="bucket_policy" parent="region" style="shape=hexagon;html=1;whiteSpace=wrap;perimeter=hexagonPerimeter;fixedSize=1;fillColor=#CFD8DC;strokeColor=#546E7A;align=center;" value="&lt;b&gt;Bucket Policy&lt;/b&gt;&lt;br&gt;Effect: Allow&lt;br&gt;Principal: *&lt;br&gt;Action: s3:GetObject" vertex="1">
+          <mxGeometry height="80" width="180" x="40" y="135" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_depends" edge="1" parent="region" source="bucket_policy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E53935;dashed=1;" target="public_block" value="depends_on">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
